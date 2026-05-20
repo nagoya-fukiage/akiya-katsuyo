@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空き家再生プロジェクト | 提案・改装・販売</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+        <div class="header-container">
+            <div class="logo">空き家再生プロジェクト</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">私たちについて</a></li>
+                    <li><a href="#services">事業内容</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>日本の空き家に、<br>新しい価値と息吹を。</h1>
+            <p>私たちは、眠っている資産の有効活用に向けて、最適なリノベーション提案から価値を高めた状態での販売までトータルでサポートします。</p>
+            <a href="#contact" class="btn">無料相談はこちら</a>
+        </div>
+    </section>
+
+    <!-- コンセプト / 私たちについて -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">ABOUT US</h2>
+            <p class="section-subtitle">日本の社会課題である「空き家問題」に、デザインとアイデアで挑む。</p>
+            <div class="about-text">
+                <p>ただ古い建物を壊すのではなく、その土地や建物が持つ歴史や魅力を引き出し、現代のライフスタイルに合った空間へと生まれ変わらせます。所有者様には「資産の有効活用」を、未来の住人様には「洗練された豊かな暮らし」をご提案します。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービス内容 -->
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">SERVICES</h2>
+            <p class="section-subtitle">提案から改装、販売までの一気通貫サポート</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-num">01</div>
+                    <h3>活用提案</h3>
+                    <p>立地条件や建物の状態を徹底的に調査し、賃貸住宅、シェアオフィス、店舗など、最も収益性と社会的価値の高い活用方法をご提案します。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-num">02</div>
+                    <h3>洗練された改装</h3>
+                    <p>建築家やデザイナーと連携し、構造の安全性を確保しながら、シンプルで無駄のない、洗練されたモダンデザインへのリノベーションを行います。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-num">03</div>
+                    <h3>販売・マッチング</h3>
+                    <p>独自のマーケティングとネットワークを駆使し、再生された物件の魅力を最大限に伝えて、次の良き買い手・借り手へと繋ぎます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせフォーム -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">CONTACT</h2>
+            <p class="section-subtitle">空き家の処分にお困りの方、購入をご検討の方、お気軽にご相談ください。</p>
+            
+            <div class="form-container">
+                <!-- Formspreeを利用したメール送信フォーム -->
+                <form id="akiya-contact-form" method="POST">
+                    <div class="form-group">
+                        <label for="name">お名前 <span class="required">必須</span></label>
+                        <input type="text" id="name" name="name" required placeholder="山田 太郎">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">メールアドレス <span class="required">必須</span></label>
+                        <input type="email" id="email" name="email" required placeholder="example@gmail.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">電話番号</label>
+                        <input type="tel" id="phone" name="phone" placeholder="090-0000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">お問い合わせ内容 <span class="required">必須</span></label>
+                        <select id="type" name="interest_type" required>
+                            <option value="" disabled selected>選択してください</option>
+                            <option value="活用提案の相談">空き家の有効活用・査定の相談</option>
+                            <option value="改装・リノベーションの相談">改装・リノベーションの相談</option>
+                            <option value="販売物件について">再生物件の購入・内覧希望</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">メッセージ本文 <span class="required">必須</span></label>
+                        <textarea id="message" name="message" rows="6" required placeholder="物件の所在地や現在の状況など、詳しくご記入いただけますとスムーズです。"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-submit">この内容で送信する</button>
+                </form>
+                <div id="form-status" class="form-status"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 空き家再生プロジェクト All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
