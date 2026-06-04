@@ -32,10 +32,14 @@
             color: #2c6e49;
         }
 
-        /* メインビジュアル */
+        /* 【変更】メインビジュアル：背景画像と文字の読みやすさを追加 */
         .hero {
-            background-color: #e8f5e9;
-            padding: 80px 0;
+            /* Unsplashの高品質な日本の一戸建て画像を背景に設定 */
+            background-image: linear-gradient(rgba(232, 245, 233, 0.85), rgba(232, 245, 233, 0.85)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: relative;
+            padding: 100px 0;
             text-align: center;
             border-bottom: 5px solid #2c6e49;
         }
@@ -44,11 +48,14 @@
             color: #1b5e20;
             margin-bottom: 20px;
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8); /* 文字の視認性向上 */
         }
         .hero p {
             font-size: 18px;
-            color: #4a4a4a;
+            color: #2b2b2b;
             margin-bottom: 30px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8); /* 文字の視認性向上 */
         }
         .cta-btn {
             display: inline-block;
@@ -197,14 +204,12 @@
 </head>
 <body>
 
-    <!-- ヘッダー -->
     <header>
         <div class="container">
             <div class="header-logo">サンプレイス</div>
         </div>
     </header>
 
-    <!-- メインビジュアル -->
     <section class="hero">
         <div class="container">
             <h1>古い空き家を「現状のまま」お預かりします<br>費用・手間ゼロで、賢く家賃収入をはじめませんか？</h1>
@@ -213,7 +218,6 @@
         </div>
     </section>
 
-    <!-- お悩みセクション -->
     <section class="problems">
         <div class="container">
             <h2 class="section-title">こんな空き家のお悩み、ありませんか？</h2>
@@ -227,7 +231,6 @@
         </div>
     </section>
 
-    <!-- 特徴セクション -->
     <section class="features">
         <div class="container">
             <h2 class="section-title">当サービスが選ばれる3つの理由</h2>
@@ -248,7 +251,6 @@
         </div>
     </section>
 
-    <!-- 【新設】誠実なお約束セクション -->
     <section class="notice">
         <div class="container">
             <h2 class="section-title">お申込み前にお伝えしたいこと</h2>
@@ -265,7 +267,6 @@
         </div>
     </section>
 
-    <!-- 仕組みセクション -->
     <section class="system">
         <div class="container">
             <h2 class="section-title">安心の「完全成果報酬」の仕組み</h2>
@@ -277,7 +278,6 @@
         </div>
     </section>
 
-    <!-- お問い合わせ -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">まずはお気軽にご相談ください</h2>
@@ -286,7 +286,6 @@
         </div>
     </section>
 
-    <!-- フッター -->
     <footer>
         <div class="container">
             <p>&copy; 2026 サンプレイス All Rights Reserved.</p>
