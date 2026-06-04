@@ -1,127 +1,298 @@
+html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>空き家再生プロジェクト | 提案・改装・販売</title>
-    <link rel="stylesheet" href="style.css">
+    <title>空き家活用サービス | 費用・手間ゼロで収益化</title>
+    <style>
+        /* ベーススタイル */
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+        .header-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c6e49;
+        }
+
+        /* メインビジュアル */
+        .hero {
+            background-color: #e8f5e9;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 5px solid #2c6e49;
+        }
+        .hero h1 {
+            font-size: 32px;
+            color: #1b5e20;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #4a4a4a;
+            margin-bottom: 30px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #ff9800;
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 0 #e65100;
+            transition: 0.2s;
+        }
+        .cta-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #e65100;
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: #2c6e49;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #ff9800;
+            margin: 10px auto 0;
+        }
+
+        /* お悩みセクション */
+        .problems {
+            background-color: #fff;
+        }
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .problem-item {
+            background-color: #ffebee;
+            border-left: 5px solid #ef5350;
+            padding: 15px 20px;
+            font-weight: bold;
+            color: #c62828;
+        }
+
+        /* サービスの特徴 */
+        .features {
+            background-color: #f1f8e9;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .feature-card h3 {
+            color: #2c6e49;
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        /* 【新設】誠実なお約束（注意点）セクション */
+        .notice {
+            background-color: #fff;
+        }
+        .notice-box {
+            background-color: #f5f5f5;
+            border-left: 5px solid #757575;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .notice-box h3 {
+            margin-top: 0;
+            color: #424242;
+            font-size: 18px;
+        }
+
+        /* 料金・仕組み */
+        .system {
+            background-color: #f1f8e9;
+            text-align: center;
+        }
+        .system-box {
+            background-color: #fff8e1;
+            border: 2px dashed #ffa000;
+            padding: 30px;
+            border-radius: 8px;
+            display: inline-block;
+            max-width: 700px;
+            text-align: left;
+        }
+        .system-box h3 {
+            color: #e65100;
+            margin-top: 0;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        /* お問い合わせ */
+        .contact {
+            background-color: #2c6e49;
+            color: #fff;
+            text-align: center;
+        }
+        .contact .section-title {
+            color: #fff;
+        }
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* フッター */
+        footer {
+            background-color: #1b5e20;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 24px; }
+            .hero p { font-size: 16px; }
+            .section-title { font-size: 24px; }
+        }
+    </style>
 </head>
 <body>
 
     <!-- ヘッダー -->
     <header>
-        <div class="header-container">
-            <div class="logo">空き家再生プロジェクト</div>
-            <nav>
-                <ul>
-                    <li><a href="#about">about</a></li>
-                    <li><a href="#services">事業内容</a></li>
-                    <li><a href="#contact">問合わせ</a></li>
-                </ul>
-            </nav>
+        <div class="container">
+            <div class="header-logo">空き家活用ナビ（※屋号を入れてください）</div>
         </div>
     </header>
 
-    <!-- ヒーローセクション -->
+    <!-- メインビジュアル -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>日本の空き家に、<br>新しい価値と息吹を。</h1>
-            <p>私たちは、眠っている資産の有効活用に向けて、最適なリノベーション提案から価値を高めた状態での販売までトータルでサポートします。</p>
-            <a href="#contact" class="btn">無料相談はこちら</a>
+        <div class="container">
+            <h1>古い空き家を「現状のまま」お預かりします<br>費用・手間ゼロで、賢く家賃収入をはじめませんか？</h1>
+            <p>リフォーム不要・管理不要。オーナー様の持ち出しは一切ありません。</p>
+            <a href="#contact" class="cta-btn">無料相談はこちら</a>
         </div>
     </section>
 
-    <!-- コンセプト / 私たちについて -->
-    <section id="about" class="section">
+    <!-- お悩みセクション -->
+    <section class="problems">
         <div class="container">
-            <h2 class="section-title">ABOUT US</h2>
-            <p class="section-subtitle">日本の社会課題である「空き家問題」に、デザインとアイデアで挑む。</p>
-            <div class="about-text">
-                <p>ただ古い建物を壊すのではなく、その土地や建物が持つ歴史や魅力を引き出し、現代のライフスタイルに合った空間へと生まれ変わらせます。所有者様には「資産の有効活用」を、未来の住人様には「洗練された豊かな暮らし」をご提案します。</p>
+            <h2 class="section-title">こんな空き家のお悩み、ありませんか？</h2>
+            <div class="problem-list">
+                <div class="problem-item">何百万円もかかるリフォーム費用が出せない</div>
+                <div class="problem-item">お金をかけても入居者がつくか不安</div>
+                <div class="problem-item">草木の管理や、近隣からのクレーム対応が大変</div>
+                <div class="problem-item">固定資産税だけを毎年払い続けている</div>
+                <div class="problem-item">建物の不具合や入居者対応をする時間がない</div>
             </div>
         </div>
     </section>
 
-    <!-- サービス内容 -->
-    <section id="services" class="section bg-light">
+    <!-- 特徴セクション -->
+    <section class="features">
         <div class="container">
-            <h2 class="section-title">SERVICES</h2>
-            <p class="section-subtitle">提案から改装、販売までの一気通貫サポート</p>
+            <h2 class="section-title">当サービスが選ばれる3つの理由</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>1. 現状のままでOK</h3>
+                    <p>古い状態のまま、こちらで借り受けます。オーナー様が事前にリフォームをする必要は一切ありません。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>2. 面倒な管理も丸投げ</h3>
+                    <p>あとから発生する建物の修繕、トラブル対応、入居者様とのやり取りやクレーム対応も、すべてこちらが引き受けます。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>3. リスクなしの収益化</h3>
+                    <p>通常なら数百万円かかる初期投資のリスクがありません。手間も時間もかけずに空き家を資産に変えられます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 【新設】誠実なお約束セクション -->
+    <section class="notice">
+        <div class="container">
+            <h2 class="section-title">お申込み前にお伝えしたいこと</h2>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-num">01</div>
-                    <h3>活用提案</h3>
-                    <p>立地条件や建物の状態を徹底的に調査し、賃貸住宅、シェアオフィス、店舗など、最も収益性と社会的価値の高い活用方法をご提案します。</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-num">02</div>
-                    <h3>洗練された改装</h3>
-                    <p>建築家やデザイナーと連携し、構造の安全性を確保しながら、シンプルで無駄のない、洗練されたモダンデザインへのリノベーションを行います。</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-num">03</div>
-                    <h3>販売・マッチング</h3>
-                    <p>独自のマーケティングとネットワークを駆使し、再生された物件の魅力を最大限に伝えて、次の良き買い手・借り手へと繋ぎます。</p>
-                </div>
+            <div class="notice-box">
+                <h3>リフォーム代金を請求するビジネスではありません</h3>
+                <p>当サービスは、オーナー様から高額なリフォーム費用をいただいて工事をする業者ではありません。あくまで「こちらの負担と責任」で物件を借り受け、運用していく仕組みです。そのため、オーナー様へ金銭的なリスクや持ち出しを求めることはありません。</p>
+            </div>
+
+            <div class="notice-box">
+                <h3>「新品同様にして返す」というサービスではございません</h3>
+                <p>入居者様を募集するにあたり、必要最低限の補修や運用上の修繕はこちらで行います。結果として、お預かり時より状態が良くなるケースもありますが、通常の賃貸物件と同様、人が暮らすことによる経年劣化や汚れは発生します。「貸したらピカピカになって返ってくる」というサービスではない点だけ、あらかじめご理解いただけますと幸いです。</p>
             </div>
         </div>
     </section>
 
-    <!-- お問い合わせフォーム -->
-    <section id="contact" class="section">
+    <!-- 仕組みセクション -->
+    <section class="system">
         <div class="container">
-            <h2 class="section-title">CONTACT</h2>
-            <p class="section-subtitle">空き家の処分にお困りの方、購入をご検討の方、お気軽にご相談ください。</p>
-            
-            <div class="form-container">
-                <!-- Formspreeを利用したメール送信フォーム -->
-                <form id="akiya-contact-form" method="POST">
-                    <div class="form-group">
-                        <label for="name">お名前 <span class="required">必須</span></label>
-                        <input type="text" id="name" name="name" required placeholder="山田 太郎">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">メールアドレス <span class="required">必須</span></label>
-                        <input type="email" id="email" name="email" required placeholder="example@gmail.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">電話番号</label>
-                        <input type="tel" id="phone" name="phone" placeholder="090-0000-0000">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="type">お問い合わせ内容 <span class="required">必須</span></label>
-                        <select id="type" name="interest_type" required>
-                            <option value="" disabled selected>選択してください</option>
-                            <option value="活用提案の相談">空き家の有効活用・査定の相談</option>
-                            <option value="改装・リノベーションの相談">改装・リノベーションの相談</option>
-                            <option value="販売物件について">再生物件の購入・内覧希望</option>
-                            <option value="その他">その他</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">メッセージ本文 <span class="required">必須</span></label>
-                        <textarea id="message" name="message" rows="6" required placeholder="物件の所在地や現在の状況など、詳しくご記入いただけますとスムーズです。"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-submit">この内容で送信する</button>
-                </form>
-                <div id="form-status" class="form-status"></div>
+            <h2 class="section-title">安心の「完全成果報酬」の仕組み</h2>
+            <div class="system-box">
+                <h3>オーナー様の初期費用は0円です</h3>
+                <p>当サービスでは、<strong>入居者が決まってから、オーナー様への家賃お支払い（発生）がスタート</strong>する形をとっています。</p>
+                <p>そのため、入居者が決まるまでオーナー様に費用が発生することはなく、こちらとしても全力で入居者をつける努力をいたします。お互いにリスクのない、安心のパートナーシップです。</p>
             </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">まずはお気軽にご相談ください</h2>
+            <p>ご相談・物件の確認はすべて無料で承ります。大切な資産を有効活用するお手伝いをさせてください。</p>
+            <a href="mailto:info@example.com" class="cta-btn" style="background-color: #fff; color: #2c6e49; box-shadow: 0 4px 0 #1b5e20;">メールで問い合わせる</a>
         </div>
     </section>
 
     <!-- フッター -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 空き家再生プロジェクト All Rights Reserved.</p>
+            <p>&copy; 2026 サンプレイス All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
