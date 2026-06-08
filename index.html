@@ -13,6 +13,8 @@
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
+            /* スムーズスクロールを有効化 */
+            scroll-behavior: smooth;
         }
         .container {
             max-width: 1100px;
@@ -20,21 +22,46 @@
             padding: 0 20px;
         }
 
-        /* ヘッダー */
+        /* ヘッダーとナビゲーション */
         header {
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
         .header-logo {
             font-size: 24px;
             font-weight: bold;
             color: #2c6e49;
         }
+        .header-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+        .header-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .header-nav a:hover {
+            color: #2c6e49;
+        }
 
-        /* 【変更】メインビジュアル：背景画像と文字の読みやすさを追加 */
+        /* メインビジュアル：背景画像と文字の読みやすさを追加 */
         .hero {
-            /* Unsplashの高品質な日本の一戸建て画像を背景に設定 */
             background-image: linear-gradient(rgba(232, 245, 233, 0.85), rgba(232, 245, 233, 0.85)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
@@ -48,14 +75,14 @@
             color: #1b5e20;
             margin-bottom: 20px;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8); /* 文字の視認性向上 */
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         .hero p {
             font-size: 18px;
             color: #2b2b2b;
             margin-bottom: 30px;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8); /* 文字の視認性向上 */
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         .cta-btn {
             display: inline-block;
@@ -76,7 +103,7 @@
 
         /* セクション共通 */
         section {
-            padding: 60px 0;
+            padding: 80px 0; /* ナビゲーションのジャンプ位置を考慮し少し広めに設定 */
         }
         .section-title {
             text-align: center;
@@ -133,7 +160,7 @@
             margin-top: 0;
         }
 
-        /* 【新設】誠実なお約束（注意点）セクション */
+        /* 誠実なお約束（注意点）セクション */
         .notice {
             background-color: #fff;
         }
@@ -171,6 +198,77 @@
             font-size: 22px;
         }
 
+        /* 代表者挨拶セクション */
+        .message {
+            background-color: #fff;
+        }
+        .message-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .message-text {
+            flex: 1;
+        }
+        .message-text p {
+            margin-bottom: 20px;
+        }
+        .message-signature {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #2c6e49;
+        }
+        .message-img {
+            width: 250px;
+            height: 250px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            font-size: 14px;
+            flex-shrink: 0;
+            /* 仮の背景画像。必要に応じて本物の写真URLに差し替えてください */
+            background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 会社概要セクション */
+        .company {
+            background-color: #f1f8e9;
+        }
+        .company-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .company-table th, .company-table td {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .company-table th {
+            background-color: #e8f5e9;
+            color: #2c6e49;
+            width: 25%;
+            text-align: left;
+            font-weight: bold;
+            vertical-align: top;
+        }
+        .company-table tr:last-child th, .company-table tr:last-child td {
+            border-bottom: none;
+        }
+
         /* お問い合わせ */
         .contact {
             background-color: #2c6e49;
@@ -196,9 +294,15 @@
 
         /* レスポンシブ対応 */
         @media (max-width: 768px) {
+            .header-inner { flex-direction: column; gap: 10px; }
             .hero h1 { font-size: 24px; }
             .hero p { font-size: 16px; }
             .section-title { font-size: 24px; }
+            .message-content { flex-direction: column-reverse; text-align: center; gap: 20px; }
+            .message-signature { text-align: center; }
+            .company-table th, .company-table td { display: block; width: auto; }
+            .company-table th { border-bottom: none; padding-bottom: 5px; }
+            .company-table td { padding-top: 5px; }
         }
     </style>
 </head>
@@ -206,7 +310,18 @@
 
     <header>
         <div class="container">
-            <div class="header-logo">サンプレイス</div>
+            <div class="header-inner">
+                <div class="header-logo">サンプレイス</div>
+                <nav class="header-nav">
+                    <ul>
+                        <li><a href="#features">特徴</a></li>
+                        <li><a href="#system">仕組み</a></li>
+                        <li><a href="#message">代表挨拶</a></li>
+                        <li><a href="#company">会社概要</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -224,73 +339,4 @@
             <div class="problem-list">
                 <div class="problem-item">何百万円もかかるリフォーム費用が出せない</div>
                 <div class="problem-item">お金をかけても入居者がつくか不安</div>
-                <div class="problem-item">草木の管理や、近隣からのクレーム対応が大変</div>
-                <div class="problem-item">固定資産税だけを毎年払い続けている</div>
-                <div class="problem-item">建物の不具合や入居者対応をする時間がない</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">当サービスが選ばれる3つの理由</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>1. 現状のままでOK</h3>
-                    <p>古い状態のまま、当社で借り受けます。オーナー様が事前にリフォームをする必要は一切ありません。</p>
-                </div>
-                <div class="feature-card">
-                    <h3>2. 面倒な管理も丸投げ</h3>
-                    <p>あとから発生する建物の修繕、トラブル対応、入居者様とのやり取りやクレーム対応も、すべて当社が引き受けます。</p>
-                </div>
-                <div class="feature-card">
-                    <h3>3. リスクなしの収益化</h3>
-                    <p>通常なら数百万円かかる初期投資のリスクがありません。手間も時間もかけずに空き家を資産に変えられます。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="notice">
-        <div class="container">
-            <h2 class="section-title">お申込み前にお伝えしたいこと</h2>
-            
-            <div class="notice-box">
-                <h3>リフォーム代金を請求するビジネスではありません</h3>
-                <p>当サービスは、オーナー様から高額なリフォーム費用をいただいて工事をする業者ではありません。あくまで「当社の負担と責任」で物件を借り受け、運用していく仕組みです。そのため、オーナー様へ金銭的なリスクや持ち出しを求めることはありません。</p>
-            </div>
-
-            <div class="notice-box">
-                <h3>「新品同様にして返す」というサービスではございません</h3>
-                <p>入居者様を募集するにあたり、必要最低限の補修や運用上の修繕は当社で行います。結果として、お預かり時より状態が良くなるケースもありますが、通常の賃貸物件と同様、人が暮らすことによる経年劣化や汚れは発生します。「貸したらピカピカになって返ってくる」というサービスではない点だけ、あらかじめご理解いただけますと幸いです。</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="system">
-        <div class="container">
-            <h2 class="section-title">安心の「完全成果報酬」の仕組み</h2>
-            <div class="system-box">
-                <h3>オーナー様の初期費用は0円です</h3>
-                <p>当サービスでは、<strong>入居者が決まってから、オーナー様への家賃お支払い（発生）がスタート</strong>する形をとっています。</p>
-                <p>そのため、入居者が決まるまでオーナー様に費用が発生することはなく、当社としても全力で入居者をつける努力をいたします。お互いにリスクのない、安心のパートナーシップです。</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">まずはお気軽にご相談ください</h2>
-            <p>ご相談・物件の確認はすべて無料で承ります。大切な資産を有効活用するお手伝いをさせてください。</p>
-            <a href="https://forms.gle/wZDhmN1PaC5CboXm9" class="cta-btn" style="background-color: #fff; color: #2c6e49; box-shadow: 0 4px 0 #1b5e20;">お問い合わせフォーム</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 サンプレイス All Rights Reserved.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+                <div class="problem-item">
