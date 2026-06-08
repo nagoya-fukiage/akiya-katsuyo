@@ -13,7 +13,6 @@
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
-            /* スムーズスクロールを有効化 */
             scroll-behavior: smooth;
         }
         .container {
@@ -35,13 +34,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            position: relative;
         }
         .header-logo {
             font-size: 24px;
             font-weight: bold;
             color: #2c6e49;
         }
+        
+        /* PC用ナビゲーションスタイル */
         .header-nav ul {
             display: flex;
             list-style: none;
@@ -53,14 +54,35 @@
             text-decoration: none;
             color: #333;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 14px;
             transition: color 0.2s;
         }
         .header-nav a:hover {
             color: #2c6e49;
         }
 
-        /* メインビジュアル：背景画像と文字の読みやすさを追加 */
+        /* ハンバーガーボタン（デフォルトは非表示） */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .hamburger-btn span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: #2c6e49;
+            margin-bottom: 6px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger-btn span:last-child {
+            margin-bottom: 0;
+        }
+
+        /* メインビジュアル */
         .hero {
             background-image: linear-gradient(rgba(232, 245, 233, 0.85), rgba(232, 245, 233, 0.85)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
@@ -103,7 +125,7 @@
 
         /* セクション共通 */
         section {
-            padding: 80px 0; /* ナビゲーションのジャンプ位置を考慮し少し広めに設定 */
+            padding: 80px 0;
         }
         .section-title {
             text-align: center;
@@ -160,7 +182,7 @@
             margin-top: 0;
         }
 
-        /* 誠実なお約束（注意点）セクション */
+        /* 誠実なお約束（注意点） */
         .notice {
             background-color: #fff;
         }
@@ -198,7 +220,7 @@
             font-size: 22px;
         }
 
-        /* 代表者挨拶セクション */
+        /* 代表者挨拶 */
         .message {
             background-color: #fff;
         }
@@ -233,13 +255,12 @@
             color: #666;
             font-size: 14px;
             flex-shrink: 0;
-            /* 仮の背景画像。必要に応じて本物の写真URLに差し替えてください */
             background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80');
             background-size: cover;
             background-position: center;
         }
 
-        /* 会社概要セクション */
+        /* 会社概要 */
         .company {
             background-color: #f1f8e9;
         }
@@ -292,12 +313,66 @@
             font-size: 14px;
         }
 
-        /* レスポンシブ対応 */
+        /* ===================================================
+           【重要】スマホ・タブレット用レスポンシブスタイル
+        ====================================================== */
         @media (max-width: 768px) {
-            .header-inner { flex-direction: column; gap: 10px; }
-            .hero h1 { font-size: 20px; }
+            /* ハンバーガーボタンを表示 */
+            .hamburger-btn {
+                display: block;
+            }
+
+            /* スマホ時はナビゲーションメニューを隠し、縦並びのドロップダウンにする */
+            .header-nav {
+                display: none; /* 初期状態は非表示 */
+                position: absolute;
+                top: 60px;
+                left: -20px;
+                right: -20px;
+                background-color: #fff;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 10px 20px;
+                border-top: 1px solid #eee;
+            }
+
+            /* JavaScriptで「.active」クラスがついたらメニューを展開 */
+            .header-nav.active {
+                display: block;
+            }
+
+            .header-nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .header-nav li {
+                border-bottom: 1px solid #f5f5f5;
+            }
+            .header-nav li:last-child {
+                border-bottom: none;
+            }
+
+            .header-nav a {
+                display: block;
+                padding: 15px 10px;
+                font-size: 16px;
+            }
+
+            /* ハンバーガーボタンが押されたときのアニメーション（三本線が「×」に変わる） */
+            .hamburger-btn.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .hamburger-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger-btn.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            /* その他のスマホ最適化 */
+            .hero h1 { font-size: 22px; }
             .hero p { font-size: 15px; }
-            .section-title { font-size: 24px; }
+            .section-title { font-size: 22px; }
             .message-content { flex-direction: column-reverse; text-align: center; gap: 20px; }
             .message-signature { text-align: center; }
             .company-table th, .company-table td { display: block; width: auto; }
@@ -312,7 +387,14 @@
         <div class="container">
             <div class="header-inner">
                 <div class="header-logo">サンプレイス</div>
-                <nav class="header-nav">
+                
+                <button class="hamburger-btn" id="js-hamburger" aria-label="メニューを開閉する">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="header-nav" id="js-nav">
                     <ul>
                         <li><a href="#features">特徴</a></li>
                         <li><a href="#system">仕組み</a></li>
@@ -388,7 +470,7 @@
             <div class="system-box">
                 <h3>オーナー様の初期費用は0円です</h3>
                 <p>当サービスでは、<strong>入居者が決まってから、オーナー様への家賃お支払い（発生）がスタート</strong>する形をとっています。</p>
-                <p>そのため、入居者が決まるまでオーナー様に費用が発生することはなく、当社としても全力で入居者をつつける努力をいたします。お互いにリスクのない、安心のパートナーシップです。</p>
+                <p>そのため、入居者が決まるまでオーナー様に費用が発生することはなく、当社としても全力で入居者をつける努力をいたします。お互いにリスクのない、安心のパートナーシップです。</p>
             </div>
         </div>
     </section>
@@ -455,6 +537,26 @@
             <p>&copy; 2026 サンプレイス All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('js-hamburger');
+        const nav = document.getElementById('js-nav');
+        const navLinks = document.querySelectorAll('#js-nav a');
+
+        // ① 三本線ボタンをクリックしたらメニューを開閉
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // ② メニュー内のリンク（特徴、仕組みなど）をクリックしたら自動で閉じる
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
